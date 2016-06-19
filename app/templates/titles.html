@@ -1,0 +1,49 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container"><h2>WebQ</h2><h4>Tool for Web Data Quality</h4></div>{% endblock %}
+
+
+<br>
+<br>
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+<div class="container">
+  <div>
+    <form method="POST" action="/sources" accept-charset="UTF-8" role="form" class="form-horizontal">
+    {{ form.hidden_tag() }}
+<div style ="background-color: #ccff99; padding: 0 90px;">
+<legend>
+<p>On this page you can find another set of documents about vaccination. For each document you can now see its title. </p>
+</legend>
+</div>
+<br>
+<legend>Click on all documents that you would consider using as a source for your article</legend>
+<br>
+{% set i = 0%}
+{% for doc in docs %}
+{% set i = i + 1%}
+<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></p>
+<hr>
+{% endfor %}
+
+  <div class="text-center">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+</div>
+</form>
+</div>
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

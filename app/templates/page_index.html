@@ -1,0 +1,31 @@
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container">WebQ</div>{% endblock %}
+
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% if current_user.is_authenticated %}
+<div class="container">  Hi {{ current_user.username }}! </div>
+{% endif %}
+<!--<a href={{url_for("logout")}}>Logout</a>-->
+<div class="container">
+<br>
+<br>
+<p>Suppose you have to have to write an article about vaccinations.</p>
+<p>The following articles are related to vaccinations. Which ones would you use as source for your article?</p>
+<p>Please, pick the article that you trust most (and repeat this action at least 3 times, with 3 different articles.</p>
+{% for doc in docs %}
+<a href="{{ doc.url }}">{{ doc.title }}</a><p>{{ doc.snippet }}</p>
+<br>
+</container>
+{% endfor %}
+{% endblock %}
+{% endblock %}
+{% endblock %}

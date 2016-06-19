@@ -1,0 +1,65 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container"><h2>WebQ - Tool for Web Information Quality</h2></div>{% endblock %}
+
+<br>
+<br>
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+<div class="container">
+  <div>
+    <form method="POST" action="/sentiment" accept-charset="UTF-8" role="form" class="form-horizontal">
+    {{ form.hidden_tag() }}
+<div style ="background-color: #ccff99; padding: 0 90px;">
+<legend>
+<p>Suppose you have to write an article on the topic of vaccination.</p>
+<p>Below you can find a number of documents about vaccination. For each document you can see some <b>tags describing the topic of the document</b> and their corresponding <b>relevance scores</b> (in brackets). The score are between 0 and 1, where 0 indicates low relevance and 1 indicates high relevance to the document.</p>
+</legend>
+</div>
+<br>
+<legend>Click on all documents that you would consider using as a source for your article</legend>
+<br>
+{% set i = 0%}
+{% for doc in docs %}
+{% set i = i + 1%}
+
+<div class="container">
+<div class="col-sm-16">
+<input type="checkbox" name="check" value=" {{ doc.url }}"> 
+<label><b> Document {{ i }} </b></label>
+</div>
+</div><div class="container">
+{% for x in doc.entities %}
+{% if 'text' in x %}
+<div class="col-sm-4">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
+
+{% endif %}
+{% endfor %}
+</div>
+<br>
+<br>
+<hr>
+<br>
+{% endfor %}
+
+  <div class="text-center">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
+</div>
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

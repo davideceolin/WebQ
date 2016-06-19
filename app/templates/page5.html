@@ -1,0 +1,177 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script language="javascript">
+$(document).ready(function(){
+ $('#ifr').on('load', function(){
+ 	   $("#loading").remove();
+       $('#ifr').css('display','block').css('width','100%').css('height','600');
+       $('#global').nextAll().remove()
+       $('#connatix').remove();
+    });
+});
+
+</script>
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container"><div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4></div>{% endblock %}
+{% endblock %}
+<div class="container">
+<legend><div style ="background-color: #ccff99; padding: 0 90px;">1. On this page you see the same article that you read before.<br>
+2. Please, <b>highlight by clicking and dragging you mouse until the end of the word or sentence</b> that support your quality assessment (e.g., the author, a specific term or sentence).<br>
+3. Click on the icon that pops up close to the selection. <img width="40px" src="/img/icon.png"><br>
+4. Motivate your highlight. <br>
+5. Add one of the following tags: <b>accuracy</b>, <b>precision</b>, <b>completeness</b>, <b>neutrality</b>, <b>relevance</b>, <b>trustworthiness</b>, <b>readability</b>; along with their nuance: <b>positive</b> or <b>negative</b>.</br>
+6. Click on "Save".<br>
+7. Below the article you can see your current quality assesment. Should you wish to revise it, you can do so before submit.
+</div></legend>
+<img id="loading" src="/img/loading.gif" with="10%" style="display:block;margin-left: auto;margin-right: auto"/>
+<iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=100%"></iframe>
+<div>
+  <div>
+    <form method="POST" action="/task2?url={{ target }}" accept-charset="UTF-8" role="form" class="form-horizontal">
+    {{ form.hidden_tag() }}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Revise your assessments</legend>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios"><h4>Overall Quality</h4><p style="font-weight:normal">Overall, is the article reliable?</p></label>
+  <div class="col-md-4"> 
+  {% for subfield in form.overallQuality %}
+  <label class="radio-inline" for="radios-0" name="overallQualitylabel">
+    	{{ subfield }} {{ subfield.label }} 
+    </label>	
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Accuracy<p style="font-weight:normal">Is the information contained in the document correct?</p></label>
+ <div class="col-md-4"> 
+  
+  {% for subfield in form.accuracy %}
+  <label class="radio-inline" for="radios-0" name="accuracylabel">
+    	{{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+ <label class="col-md-4 control-label" for="radios">Precision<p style="font-weight:normal">Is the information contained in the document precise (as opposed to vague)?</p></label>
+   <div class="col-md-4"> 
+  {% for subfield in form.precision %}
+      <label class="radio-inline" for="radios-0" name="precisionlabel">
+  {{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Completeness<p style="font-weight:normal">Is the information contained in the document complete?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+  
+   {% for subfield in form.completeness %}
+   <label class="radio-inline" for="radios-0" name="completenesslabel">
+    	{{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Neutrality<p style="font-weight:normal">Is the document neutral with respect to the topic addressed, or does it show a clear stance (e.g., pro, against).</p></label>
+<div class="col-md-4"> 
+  
+  {% for subfield in form.neutrality %}
+    	<label class="radio-inline" for="radios-0" name="neutralitylabel">
+    	{{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Relevance<p style="font-weight:normal">Is the document relevant with respect to your topic of interest (vaccinations)?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+  {% for subfield in form.relevance %}
+    	<label class="radio-inline" for="radios-0" name="relevancelabel">
+    	{{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+        </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Trustworthiness<p style="font-weight:normal">Is the source trustworthy or does it exhibit malicious intentions?</p></label>
+  <div class="col-md-4"> 
+  {% for subfield in form.trustworthiness %}
+    	<label class="radio-inline" for="radios-0" name="trustworthinesslabel">
+    {{ subfield }} {{ subfield.label }}
+    </label>	
+    {% endfor %}
+      
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Readability<p style="font-weight:normal">Does the document read well?</p></label>
+  <div class="col-md-4"> 
+  {% for subfield in form.readability %}
+    	<label class="radio-inline" for="radios-0" name="readability">
+    	{{ subfield }} {{ subfield.label }}
+    	</label>
+    {% endfor %}
+      
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Button (Double)
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id">Double Button</label>
+  <div class="col-md-8">
+    <button id="button1id" name="button1id" class="btn btn-success">Neutral</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Biased</button>
+  </div>
+</div>
+-->
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Additional Remarks<p style="font-weight:normal">Do you have additional comments about the document? (E.g., important quality dimensions we might have missed, and their value.)</p></label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" name="textarea"></textarea>
+  </div>
+</div>
+<!-- Button -->
+<br>
+<div class="text-center">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</div>
+{% endblock %}
+{% endblock %}
+</fieldset>
+</form>
+
+    </form>  
+  </div>
+</div>
+</body>
+</html>

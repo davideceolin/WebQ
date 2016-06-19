@@ -1,0 +1,61 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container"><h2>WebQ</h2> <h4>Tool for Web Information Quality</h4></div>{% endblock %}
+
+<br>
+<br>
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+<div class="container">
+  <div>
+    <form method="POST" action="/trustworthiness" accept-charset="UTF-8" role="form" class="form-horizontal">
+    {{ form.hidden_tag() }}
+<div style ="background-color: #ccff99; padding: 0 90px;"><legend>
+<p>On this page you can find another set of documents about vaccination. For each document you can now see the ratings for the <b>overall sentiment of the document</b>, and for all the <b>emotions covered in its text</b>. All the ratings are between 0 and 1, where 0 is indicates low score and 1 indicates high score. </p></legend>
+</div>
+<br>
+<legend>Click on all documents that you would consider using as a source for your article</legend>
+{% set i = 0%}
+{% for doc in docs %}
+<div class="container">
+{% set i = i + 1%}
+{% set x = doc.sentiment %}
+<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i }}</label></p>
+{% if doc.sentiment is not none %}
+{% if doc.sentiment >0 %}
+<div class="row"><div class="col-sm-2"><u>Positive</u> Sentiment: {{ doc.sentiment }}</div>
+{% elif doc.sentiment < 0 %}
+{% set x = x*-1 %}
+<div class="row"><div class="col-sm-2"><u>Negative</u> Sentiment: {{ x }} </div>
+{% else %}
+<p>Neutral Sentiment : 0 </p>
+{% endif %}
+{% else %}
+<p>Neutral Sentiment: 0 </p>
+{% endif %}
+<div class="col-sm-1"> Joy {{doc.emotion['joy']}} </div><div class="col-sm-1"> Anger {{doc.emotion['anger']}} </div><div class="col-sm-2"> Sadness {{doc.emotion['sadness']}} </div><div class="col-sm-1"> Fear {{doc.emotion['fear']}} </div><div class="col-sm-2"> Disgust {{doc.emotion['disgust']}}
+</div></div>
+</div><hr>
+{% endfor %}
+
+<div class="text-center">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+</div>
+</form>
+</div>
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

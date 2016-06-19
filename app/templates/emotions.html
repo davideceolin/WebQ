@@ -1,0 +1,52 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container">WebQ</div>{% endblock %}
+
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% if current_user.is_authenticated %}
+<div class="container">  Hi {{ current_user.username }}! </div>
+{% endif %}
+<!--<a href={{url_for("logout")}}>Logout</a>-->
+<div class="container">
+  <div>
+    <form method="POST" action="/emotions" accept-charset="UTF-8" role="form" class="form-horizontal">
+    {{ form.hidden_tag() }}
+<br>
+<br>
+<p>Suppose you have to have to write an article about vaccinations.</p>
+<p>The following articles are related to vaccinations. Which ones would you use as source for your article?</p>
+<p>Please, pick the article that you trust most (and repeat this action at least 3 times, with 3 different articles.</p>
+{% for doc in docs %}
+<input type="checkbox" name="check" value=" {{ doc.url }}">{{ doc.title }}<p>{{ doc.snippet }}</p><p>{{doc.sentiment.score}}</p>
+<br>
+{% endfor %}
+{% for doc in form.articles %}
+{% if doc.sentiment is defined %}
+ {{doc.title}} :: {{doc}}<br>
+{% endif %}
+{% endfor %}
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">Submit</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</div>
+</form>
+</div>
+
+{% endblock %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container">Enhanced Search</div>{% endblock %}
+
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% if current_user.is_authenticated %}
+<div class="container">  Hi {{ current_user.username }}! </div>
+{% endif %}
+
+<div class="container">
+  <div>
+    <legend>Search</legend>
+   <div>
+    {% for error in errors %}
+    {{ error }}<br>
+    {% endfor %}
+    </div>
+   
+    <form method="POST" action="." accept-charset="UTF-8" role="form">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+      <div>
+      <label>
+        <input type="text" name="s" id="s">
+      </label>
+      </div>
+      <button type="submit" name="search" id="search">Search</button>
+      <BR>
+      {% if search is defined %}
+      <br>
+      {% set i = 1 %}
+      {% for si in search.searchItems %}
+      <a href="http://hidden-atoll-67488.herokuapp.com/annotate2/?url={{ search.searchItems[0].url}}"> Document {{ i }} </a>
+      <BR>
+      Sentiment: {{ si.sentiment.score }}
+      <br>
+      Objectivity: {{ si.objectivity.score }}
+      {% set i = i + 1 %}
+      </br>
+      </br>
+      {% endfor %}
+      {% endif %}
+    </form>  
+  </div>
+</div>
+{% endblock %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% block html %}
+{% block head %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://assets.annotateit.org/annotator/v1.1.0/annotator-full.min.js"></script>
+<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container">Enhanced Search</div>{% endblock %}
+{% endblock %}
+<div class="container">
+{% if current_user.is_authenticated %}
+<div class="container">  Hi {{ current_user.username }} </div>
+{% endif %}
+<p> Do you spot any quality marker in the document? Please annotate it! </p>
+<iframe id="ifr" src="{{ url }}" width="600" height="600"></iframe>
+<br>
+<br>
+<a href="{{ next }}">Next</a>
+</div>
+{% endblock %}
+{% endblock %}

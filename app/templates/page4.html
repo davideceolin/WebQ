@@ -1,0 +1,272 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<script language="javascript">
+$(document).ready(function(){
+ $('#ifr').on('load', function(){
+ 	   $("#loading").remove();
+       $('#ifr').css('display','block').css('width','100%').css('height','600');
+       $('#global').nextAll().remove()
+       $('#connatix').remove();
+    });
+});
+</script>
+{% endblock %}
+{% block body %}
+{% block title %}<div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4></div>{% endblock %}
+{% endblock %}
+<br>
+<div class="container">
+<legend><div style ="background-color: #ccff99; padding: 0 90px;">On this page you will see an article we ask you to read and assess in terms of its overall quality according to a number of criteria, e.g. accuracy, completeness, neutrality, relevance, etc. You can record your assessment on the scale of 1 to 5, where 1 indicates low score and 5 indicates high score. Please provide at the end any additional comments or feedback about the article and its quality.</div></legend>
+<img id="loading" src="img/loading.gif" with="10%" style="display:block;margin-left: auto;margin-right: auto"/>
+<iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=100%"></iframe>
+
+<br>
+<div>
+  <div id="global">
+    <form method="POST" action="/annotate2/?url={{ target }}" accept-charset="UTF-8" role="form" class="form-horizontal" id="form_q">
+    {{ form.hidden_tag() }}
+
+<fieldset>
+
+<!-- Form Name -->
+<legend>Assess the article</legend>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios"><h4>Overall Quality</h4><p style="font-weight:normal">In overall, how correct is this article?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="overallQualitylabel">
+      <input type="radio" name="overallQuality" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="overallQuality" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="overallQuality" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="overallQuality" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="overallQuality" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Accuracy<p style="font-weight:normal">How correct is the information in this document?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="accuracylabel">
+      <input type="radio" name="accuracy" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="accuracy" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="accuracy" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="accuracy" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="accuracy" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Precision<p style="font-weight:normal">How precise is the information in this document (as opposed to vague)?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="precisionlabel">
+      <input type="radio" name="precision" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="precision" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="precision" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="precision" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="precision" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Completeness<p style="font-weight:normal">How complete is the information in this document?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="completenesslabel">
+      <input type="radio" name="completeness" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="completeness" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="completeness" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="completeness" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="completeness" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Neutrality<p style="font-weight:normal">Is the document neutral with respect to the topic addressed, or does it show a clear stance (e.g., pro, against).</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="neutralitylabel">
+      <input type="radio" name="neutrality" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="neutrality" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="neutrality" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="neutrality" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="neutrality" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="radios">Relevance<p style="font-weight:normal">How relevant is the document relevant to vaccinations?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="relevancelabel">
+      <input type="radio" name="relevance" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="relevance" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="relevance" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="relevance" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="relevance" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Trustworthiness<p style="font-weight:normal">How trustworthy is the source? Is the source trustworthy or does it exhibit malicious intentions?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="trustworthinesslabel">
+      <input type="radio" name="trustworthiness" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="trustworthiness" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="trustworthiness" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="trustworthiness" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="trustworthiness" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="radios">Readability<p style="font-weight:normal">Does the document read well?</p></label>
+  <input type="hidden" name="target" value=" {{ target }} ">
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="radios-0" name="readabilitylabel">
+      <input type="radio" name="readability" id="1" value="1" checked="checked">
+      1 (low)
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="readability" id="2" value="2">
+      2
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="readability" id="3" value="3">
+      3
+    </label> 
+    <label class="radio-inline" for="radios-3">
+      <input type="radio" name="readability" id="4" value="4">
+      4
+    </label>
+    <label class="radio-inline" for="radios-4">
+      <input type="radio" name="readability" id="5" value="5">
+      5 (high)
+    </label>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Additional Remarks<p style="font-weight:normal">Are there other quality dimensions that you find important? Do you have additional comments about the document? (E.g., important quality dimensions we might have missed, and their value.)</p></label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" name="textarea"></textarea>
+  </div>
+</div>
+<!-- Button -->
+<br>
+  <div class="text-center">
+    <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</div>
+{% endblock %}
+
+</fieldset>
+</form>
+
+  </div>
+</div>
+</body>
+</html>
