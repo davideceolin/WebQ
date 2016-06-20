@@ -1,0 +1,26 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %}<div class="container"><div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4></div>{% endblock %}
+{% endblock %}
+<div class="container">
+<legend><div style ="background-color: #ccff99; padding: 0 90px;">
+</div></legend>
+<form action="/task1">
+<div class="text-center">
+<button id="submit" name="submit" class="btn btn-primary" type="submit">Start</button>
+</div>
+</form>
+</body>
+</html>

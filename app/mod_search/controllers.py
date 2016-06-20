@@ -60,6 +60,7 @@ mod_index = Blueprint('index', __name__, url_prefix='')
 mod_generate_token = Blueprint('generate_token', __name__, url_prefix='')
 mod_task1 = Blueprint('task1', __name__, url_prefix='')
 mod_task2 = Blueprint('task2', __name__, url_prefix='')
+mod_land1 = Blueprint('land1',__name__,url_prefix='')
 mod_sentiment = Blueprint('sentiment', __name__, url_prefix='')
 mod_trustworthiness = Blueprint('trustworthiness', __name__, url_prefix='')
 mod_entities = Blueprint('entities', __name__, url_prefix='')
@@ -326,13 +327,17 @@ def task2():
 
 
 import urllib
-@mod_task1.route('/',methods=['GET','POST'])
+@mod_task1.route('/task1',methods=['GET','POST'])
 @login_required
 def task1():
-    session['docs'] = current_user.doc_sequence.sequence
     form = BestForm(request.form)
     return render_template("entities.html",form=form, docs=session['docs'])
 
+@mod_land1.route('/',nethods=['GET','POST'])
+@login_required
+def land1():
+    session['docs'] = current_user.doc_sequence.sequence
+    return render_template("landing1.html")
 
 @mod_trustworthiness.route('/trustworthiness',methods=['GET','POST'])
 def trustworthiness():
