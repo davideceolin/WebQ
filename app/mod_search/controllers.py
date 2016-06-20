@@ -333,7 +333,7 @@ def task1():
     form = BestForm(request.form)
     return render_template("entities.html",form=form, docs=session['docs'])
 
-@mod_land1.route('/',nethods=['GET','POST'])
+@mod_land1.route('/',methods=['GET','POST'])
 @login_required
 def land1():
     session['docs'] = current_user.doc_sequence.sequence
