@@ -23,7 +23,7 @@
 <legend>
 <div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
 You are to write an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br><br/>
-For each document you can now see their <b>titles, sources, all their ratings and tags</b>. All the ratings are between 0 and 1, where 0 is idicates low score and 1 indicates high score.
+For each document you can now see their <b>titles, sources, all their ratings and tags</b>. All the ratings are between 0 and 1, where 0 is indicates low score and 1 indicates high score.
 </div></legend>
 <br>
 <legend>Click on all documents that you would consider using as a source for your article</legend>
@@ -36,7 +36,7 @@ For each document you can now see their <b>titles, sources, all their ratings an
 </div>
 </div>
 <div class="row">
-Entities:<br/>
+<div class="col-md-4">Entities:</div>
 {% for x in doc.entities %}
 {% if 'text' in x %}
 <div class="col-md-4">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
