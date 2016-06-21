@@ -50,7 +50,8 @@ It was not possible to compute the sentiment of this document.
 {% endif %}
 
 Moreover, the document shows the following emotions.
-{{'Much' if doc.emotion['joy'] >0.6 else 'some' if doc.emotion['joy']>0.3 else if doc.emotion['joy']>0 'a bit of' else 'No'}}
+{{'Much' if doc.emotion['joy']>0.6 else 'some' if doc.emotion['joy']>0.3 else 'a bit of' if doc.emotion['joy']>0 else 'No'}}
+
 <u>Joy</u> [{{doc.emotion['joy']}} ] 
 {{'Much' if doc.emotion['anger'] >0.6 else 'some' if doc.emotion['anger']>0.3 else if doc.emotion['anger']>0 'a bit of' else 'No'}}
 <u>Anger</u> [{{doc.emotion['anger']}} ] 
