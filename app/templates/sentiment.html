@@ -25,9 +25,9 @@ Below you can find <b>the same documents as before, in a different order</b>. Fo
 </legend>
 <br>
 <legend>Click on all documents that you would consider using as a source for your article</legend>
+<div class="container">
 {% set i = 0%}
 {% for doc in docs %}
-<div class="container">
 {% set i = i + 1%}
 {% set x = doc.sentiment %}
 <p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i }}</label></p>
@@ -59,13 +59,14 @@ Moreover, the document shows the following emotions.
 <u>sadness</u> [{{doc.emotion['sadness']}}]. 
 {{'A high level of' if doc.emotion['fear']>0.6 else 'Some' if doc.emotion['fear']>0.3 else 'A bit of' if doc.emotion['fear']>0 else 'No'}} <u>fear</u> [{{doc.emotion['fear']}}].
 {{'A high level of' if doc.emotion['disgust']>0.6 else 'Some' if doc.emotion['disgust']>0.3 else 'A bit of' if doc.emotion['disgust']>0 else 'No'}} <u>disgust</u> [{{doc.emotion['disgust']}}].
-</div><hr>
+<hr>
 {% endfor %}
 
 <div class="text-center">
     <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
 </div>
 </form>
+</div>
 </div>
 
 {% endblock %}
