@@ -31,11 +31,11 @@ For each document you can now see their <b>titles, sources, all their ratings an
 <div class="row"><p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></p></div>
 <div class="row">
 <div class="col-md-12">
-<p>Source: {{doc.source}}</p>
+<p><i>Source:</i> {{doc.source}}</p>
 </div>
 </div>
 <div class="row">
-<div class="col-md-4">Entities:</div></div>
+<div class="col-md-4"><i>Entities:</i></div></div>
 <div class="row">
 {% for x in doc.entities %}
 {% if 'text' in x %}
@@ -44,7 +44,7 @@ For each document you can now see their <b>titles, sources, all their ratings an
 {% endfor %}
 </div>
 <br/>
-<div class="row">
+<div class="row"><i>Sentiment:</i>
 <div class="col-md-12">
 {% set i = i + 1%}
 {% set x = doc.sentiment %}
@@ -81,7 +81,7 @@ Moreover, the document shows the following emotions.
 <br/>
 <div class="row">
 <div class="col-md-4">
-<p>Trustworthiness: {{doc.trustworthiness}}</p>
+<p><i>Trustworthiness:</i> {{doc.trustworthiness}}</p>
 </div>
 </div>
 <hr>
