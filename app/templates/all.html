@@ -46,22 +46,35 @@ For each document you can now see their <b>titles, sources, all their ratings an
 <br>
 {% set i = i + 1%}
 {% set x = doc.sentiment %}
-
+<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{i+6}} </label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
-<div class="row"><div class="col-md-2"><u>Positive</u> Sentiment: {{ doc.sentiment }}</div>
+This document shows a 
+
+{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
+<u>positive</u> sentiment [{{ doc.sentiment }}].
 {% elif doc.sentiment < 0 %}
 {% set x = x*-1 %}
-<div class="row"><div class="col-md-2"><u>Negative</u> Sentiment: {{ x }} </div>
+This document shows a 
+{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
+<u>negative</u> sentiment [{{ x }}].
 {% else %}
-<p>Neutral Sentiment : 0 </p>
+It was not possible to compute the sentiment of this document.
 {% endif %}
 {% else %}
-<p>Neutral Sentiment: 0 </p>
+It was not possible to compute the sentiment of this document.
 {% endif %}
-<div class="col-md-1"> Joy {{doc.emotion['joy']}} </div><div class="col-md-1"> Anger {{doc.emotion['anger']}} </div><div class="col-md-2"> Sadness {{doc.emotion['sadness']}} </div><div class="col-md-1"> Fear {{doc.emotion['fear']}} </div><div class="col-md-2"> Disgust {{doc.emotion['disgust']}}
-</div>
-</div>
+
+Moreover, the document shows the following emotions.
+{{'A high level of' if doc.emotion['joy']>0.6 else 'Some' if doc.emotion['joy']>0.3 else 'A bit of' if doc.emotion['joy']>0 else 'No'}}
+
+<u>joy</u> [{{doc.emotion['joy']}}]. 
+{{'A high level of' if doc.emotion['anger']>0.6 else 'Some' if doc.emotion['anger']>0.3 else 'A bit of' if doc.emotion['anger']>0 else 'No'}}
+<u>anger</u> [{{doc.emotion['anger']}}] .
+{{'A high level of' if doc.emotion['sadness']>0.6 else 'Some' if doc.emotion['sadness']>0.3 else 'A bit of' if doc.emotion['sadness']>0 else 'No'}}
+<u>sadness</u> [{{doc.emotion['sadness']}}]. 
+{{'A high level of' if doc.emotion['fear']>0.6 else 'Some' if doc.emotion['fear']>0.3 else 'A bit of' if doc.emotion['fear']>0 else 'No'}} <u>fear</u> [{{doc.emotion['fear']}}].
+{{'A high level of' if doc.emotion['disgust']>0.6 else 'Some' if doc.emotion['disgust']>0.3 else 'A bit of' if doc.emotion['disgust']>0 else 'No'}} <u>disgust</u> [{{doc.emotion['disgust']}}].</div>
 <br>
 <div class="row">
 <div class="col-md-4">
