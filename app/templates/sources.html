@@ -10,10 +10,6 @@
 {% block body %}
 {% block content%}
 {% block title %}<div class="container"><h2>WebQ</h2><h4>Tool for Web Data Quality</h4></div>{% endblock %}
-
-
-<br>
-<br>
 {% macro render_field(field, placeholder=None) %}
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
@@ -26,7 +22,7 @@
 <legend>
 <div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
 You are to write an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br><br/>
-For each document you can now see its source.
+Below you can find <b>the same documents as before, in a different order.</b> For each document you can now see its source.
 </div>
 </legend>
 <br>
