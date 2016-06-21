@@ -51,8 +51,8 @@ It was not possible to compute the sentiment of this document.
 Moreover, the document shows the following emotions.
 {{'Much' if doc.emotion['joy'] >0.6 else 'some' if doc.emotion['joy']>0.3 else if .emotion['joy']>0 'a bit of' else 'No'}}
 <u>Joy</u> [{{doc.emotion['joy']}} ] 
-
-<div class="col-sm-1"> Anger {{doc.emotion['anger']}} </div><div class="col-sm-2"> Sadness {{doc.emotion['sadness']}} </div><div class="col-sm-1"> Fear {{doc.emotion['fear']}} </div><div class="col-sm-2"> Disgust {{doc.emotion['disgust']}}
+{{'Much' if doc.emotion['anger'] >0.6 else 'some' if doc.emotion['anger']>0.3 else if .emotion['anger']>0 'a bit of' else 'No'}}
+<u>Anger</u> [{{doc.emotion['anger']}} ] <div class="col-sm-2"> Sadness {{doc.emotion['sadness']}} </div><div class="col-sm-1"> Fear {{doc.emotion['fear']}} </div><div class="col-sm-2"> Disgust {{doc.emotion['disgust']}}
 </div></div>
 </div><hr>
 {% endfor %}
