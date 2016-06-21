@@ -30,7 +30,7 @@ Below you can find <b>the same documents as before, in a different order</b>. Fo
 {% for doc in docs %}
 {% set i = i + 1%}
 {% set x = doc.sentiment %}
-<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i +6}}</label></p>
+<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{i+6}} </label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
 This document shows a 
