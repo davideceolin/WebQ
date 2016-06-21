@@ -39,7 +39,9 @@ Below you can find <b>the same documents as before, in a different order</b>. Fo
 <u>positive</u> sentiment [{{ doc.sentiment }}].</div>
 {% elif doc.sentiment < 0 %}
 {% set x = x*-1 %}
-<div class="row"><div class="col-sm-2">This document shows a <u>negative</u> sentiment [{{ x }}]. </div>
+<div class="row"><div class="col-sm-2">This document shows a 
+{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
+<u>negative</u> sentiment [{{ x }}]. </div>
 {% else %}
 <p>Neutral Sentiment : 0 </p>
 {% endif %}
