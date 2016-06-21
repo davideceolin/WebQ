@@ -22,13 +22,14 @@
   <div>
     <form method="POST" action="/sentiment" accept-charset="UTF-8" role="form" class="form-horizontal">
     {{ form.hidden_tag() }}
-<div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
 <legend>
+<div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
 You are to write an article on the debate about <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.<br/><br/>
-Below you can find a number of documents about this topic. For each document you can see some <b>keywords describing the topic of the document</b> and their corresponding <b>importance in the document</b> (in brackets). The score are between 0 and 1, where 0 indicates low relevance and 1 indicates high relevance to the document.<br/><br/>
-Click on all documents that you would consider using as a source for your article
-</legend>
+Below you can find a number of documents about this topic. For each document you can see some <b>keywords describing the topic of the document</b> and their corresponding <b>importance in the document</b> (in brackets). The score are between 0 and 1, where 0 indicates low relevance and 1 indicates high relevance to the document.
 </div>
+</legend>
+<br>
+<legend>Click on all documents that you would consider using as a source for your article</legend>
 <br>
 {% set i = 0%}
 {% for doc in docs %}
