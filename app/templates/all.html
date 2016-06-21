@@ -39,10 +39,11 @@ For each document you can now see their <b>titles, sources, all their ratings an
 <div class="row">
 {% for x in doc.entities %}
 {% if 'text' in x %}
-<div class="col-md-4">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
+<div class="col-md-3">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
 {% endif %}
 {% endfor %}
 </div>
+<br/>
 <div class="row">
 <div class="col-md-12">
 {% set i = i + 1%}
