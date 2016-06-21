@@ -34,10 +34,10 @@ $(document).ready(function(){
 7. Below the article you can see your current quality assesment. Should you wish to revise it, you can do so before submit.
 </div></legend>
 <img id="loading" src="/img/loading.gif" with="5%" style="display:block;margin-left: auto;margin-right: auto"/>
-<iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=100%"></iframe>
+<iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=80%"></iframe>
 <div>
   <div>
-    <form method="POST" action="/task2?url={{ target }}" accept-charset="UTF-8" role="form" class="form-horizontal">
+    <form method="POST" action="/land2?url={{ target }}" accept-charset="UTF-8" role="form" class="form-horizontal">
     {{ form.hidden_tag() }}
 <fieldset>
 
