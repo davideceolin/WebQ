@@ -33,7 +33,7 @@ Below you can find <b>the same documents as before, in a different order</b>. Fo
 <p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i }}</label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
-<div class="row">This document shows a 
+This document shows a 
 
 {{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
 <u>positive</u> sentiment [{{ doc.sentiment }}].
