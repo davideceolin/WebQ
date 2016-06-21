@@ -52,11 +52,11 @@ It was not possible to compute the sentiment of this document.
 Moreover, the document shows the following emotions.
 {{'Much' if doc.emotion['joy']>0.6 else 'some' if doc.emotion['joy']>0.3 else 'A bit of' if doc.emotion['joy']>0 else 'No'}}
 
-<u>joy</u> [{{doc.emotion['joy']}} ]. 
+<u>joy</u> [{{doc.emotion['joy']}}]. 
 {{'Much' if doc.emotion['anger']>0.6 else 'some' if doc.emotion['anger']>0.3 else 'A bit of' if doc.emotion['anger']>0 else 'No'}}
-<u>anger</u> [{{doc.emotion['anger']}} ] .
+<u>anger</u> [{{doc.emotion['anger']}}] .
 {{'Much' if doc.emotion['sadness']>0.6 else 'some' if doc.emotion['sadness']>0.3 else 'A bit of' if doc.emotion['sadness']>0 else 'No'}}
-<u>sadness</u> [{{doc.emotion['sadness']}} ]. 
+<u>sadness</u> [{{doc.emotion['sadness']}}]. 
 {{'Much' if doc.emotion['fear']>0.6 else 'some' if doc.emotion['fear']>0.3 else 'A bit of' if doc.emotion['fear']>0 else 'No'}} <u>fear</u> [{{doc.emotion['fear']}}].
 {{'Much' if doc.emotion['disgust']>0.6 else 'some' if doc.emotion['disgust']>0.3 else 'A bit of' if doc.emotion['disgust']>0 else 'No'}} <u>disgust</u> [{{doc.emotion['disgust']}}].
 </div></div>
