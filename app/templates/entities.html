@@ -41,7 +41,7 @@ Below you can find a number of documents about this topic. For each document you
 </div><div class="container">
 {% for x in doc.entities %}
 {% if 'text' in x %}
-<div class="col-sm-5">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
+<div class="col-sm-3">{{ x['text'] }} ({{'%0.1f'| format(x['relevance']|float)}}) </div>
 
 {% endif %}
 {% endfor %}
