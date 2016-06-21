@@ -59,7 +59,6 @@ Moreover, the document shows the following emotions.
 <u>sadness</u> [{{doc.emotion['sadness']}}]. 
 {{'A high level of' if doc.emotion['fear']>0.6 else 'Some' if doc.emotion['fear']>0.3 else 'A bit of' if doc.emotion['fear']>0 else 'No'}} <u>fear</u> [{{doc.emotion['fear']}}].
 {{'A high level of' if doc.emotion['disgust']>0.6 else 'Some' if doc.emotion['disgust']>0.3 else 'A bit of' if doc.emotion['disgust']>0 else 'No'}} <u>disgust</u> [{{doc.emotion['disgust']}}].
-</div>
 </div><hr>
 {% endfor %}
 
