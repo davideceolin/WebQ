@@ -28,7 +28,7 @@ For each document you can now see their <b>titles, sources, all their ratings an
 <legend>Click on all documents that you would consider using as a source for your article</legend>
 {% set i = 0%}
 {% for doc in docs %}
-<div class="row"><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></div>
+<div class="row"><p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></p></div>
 <div class="row">
 <div class="col-md-12">
 <p>Source: {{doc.source}}</p>
@@ -45,7 +45,6 @@ For each document you can now see their <b>titles, sources, all their ratings an
 <br>
 {% set i = i + 1%}
 {% set x = doc.sentiment %}
-<p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{i+6}} </label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
 This document shows a 
