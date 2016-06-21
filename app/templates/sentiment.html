@@ -9,7 +9,7 @@
 {% endblock %}
 {% block body %}
 {% block content%}
-{% block title %}<div class="container"><h2>WebQ</h2> <h4>Tool for Web Information Quality</h4></div>{% endblock %}
+{% block title %}<div class="container"><h2>WebQ</h2> <h4>Tool for Web Information Quality</h4>{% endblock %}
 
 <br>
 <br>
@@ -22,9 +22,11 @@
   <div>
     <form method="POST" action="/trustworthiness" accept-charset="UTF-8" role="form" class="form-horizontal">
     {{ form.hidden_tag() }}
-<div style ="background-color: #ccff99; padding: 0 90px;"><legend>
-<p>On this page you can find another set of documents about vaccination. For each document you can now see the ratings for the <b>overall sentiment of the document</b>, and for all the <b>emotions covered in its text</b>. All the ratings are between 0 and 1, where 0 is indicates low score and 1 indicates high score. </p></legend>
-</div>
+<legend>
+<div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
+You are to write an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br/><br/>
+Below you can find a number of documents about this topic. For each document you can now see the ratings for the <b>overall sentiment of the document</b>, and for all the <b>emotions covered in its text</b>. All the ratings are between 0 and 1, where 0 is indicates low score and 1 indicates high score.</div>
+</legend>
 <br>
 <legend>Click on all documents that you would consider using as a source for your article</legend>
 {% set i = 0%}
