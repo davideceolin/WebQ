@@ -11,14 +11,11 @@
 {% block content%}
 {% block title %}<div class="container"><h2>WebQ </h2><h4>Tool for Web Data Quality</h4>{% endblock %}
 
-<br>
-<br>
 {% macro render_field(field, placeholder=None) %}
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
 {% endmacro %}
 
-<div class="container">
   <div>
     <form method="POST" action="/titles" accept-charset="UTF-8" role="form" class="form-horizontal">
     {{ form.hidden_tag() }}
@@ -27,6 +24,8 @@
 You are to write an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br/><br/>
 Below you can find <b>the same documents as before, in a different order</b>. 
 For each document you can now see the ratings for how <b>trustworthy the source of the document</b> is. All the ratings are between 0 and 1, where 0 is idicates low trust and 1 indicates high trust.
+<br>
+<b> Trustworthiness is obtained by the <b>Web Of Trust</b> service.
 </div>
 </legend>
 
