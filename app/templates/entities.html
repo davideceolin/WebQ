@@ -16,7 +16,6 @@
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
 {% endmacro %}
 
-<div class="container">
   <div>
     <form method="POST" action="/sentiment" accept-charset="UTF-8" role="form" class="form-horizontal">
     {{ form.hidden_tag() }}
@@ -45,7 +44,7 @@ Below you can find a number of documents about this topic. For each document you
 
 {% endif %}
 {% endfor %}
-</div>
+
 <br>
 <br>
 <hr>
