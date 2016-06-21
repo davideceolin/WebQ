@@ -33,20 +33,20 @@ Below you can find <b>the same documents as before, in a different order</b>. Fo
 <p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i }}</label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
-<div class="row"><div class="col-sm-2">This document shows a 
+<div class="row">This document shows a 
 
 {{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
-<u>positive</u> sentiment [{{ doc.sentiment }}].</div>
+<u>positive</u> sentiment [{{ doc.sentiment }}].
 {% elif doc.sentiment < 0 %}
 {% set x = x*-1 %}
-<div class="row"><div class="col-sm-2">This document shows a 
+<div class="row">This document shows a 
 {{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
-<u>negative</u> sentiment [{{ x }}]. </div>
+<u>negative</u> sentiment [{{ x }}].
 {% else %}
-<p>Neutral Sentiment : 0 </p>
+It was not possible to compute the sentiment of this document.
 {% endif %}
 {% else %}
-<p>Neutral Sentiment: 0 </p>
+It was not possible to compute the sentiment of this document.
 {% endif %}
 <div class="col-sm-1"> Joy {{doc.emotion['joy']}} </div><div class="col-sm-1"> Anger {{doc.emotion['anger']}} </div><div class="col-sm-2"> Sadness {{doc.emotion['sadness']}} </div><div class="col-sm-1"> Fear {{doc.emotion['fear']}} </div><div class="col-sm-2"> Disgust {{doc.emotion['disgust']}}
 </div></div>
