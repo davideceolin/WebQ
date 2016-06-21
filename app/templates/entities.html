@@ -11,8 +11,6 @@
 {% block content%}
 {% block title %}<div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4>{% endblock %}
 
-<br>
-<br>
 {% macro render_field(field, placeholder=None) %}
     {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
     {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
