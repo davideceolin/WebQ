@@ -1,0 +1,32 @@
+{% macro render_field(field, placeholder=None) %}
+    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}
+
+{% block html %}
+{% block head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+{% endblock %}
+{% block body %}
+{% block content%}
+{% block title %<div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4>{% endblock %}
+{% endblock %}
+<div class="container">
+<legend><div style ="background-color: #ccff99; padding:30px 30px 30px 30px;">
+You now start <b>task 2</b>.<br/>
+
+You will read and assess one of the documents from your selection.
+</div></legend>
+<form action="/task2">
+<div class="text-center">
+<button id="submit" name="submit" class="btn btn-primary" type="submit">Start Task 1</button>
+</div>
+</form>
+{% endblock %}
+{% endblock %}
+</div>
+</body>
+</html>

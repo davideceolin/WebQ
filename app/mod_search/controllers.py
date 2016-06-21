@@ -61,6 +61,7 @@ mod_generate_token = Blueprint('generate_token', __name__, url_prefix='')
 mod_task1 = Blueprint('task1', __name__, url_prefix='')
 mod_task2 = Blueprint('task2', __name__, url_prefix='')
 mod_land1 = Blueprint('land1',__name__,url_prefix='')
+mod_land2 = Blueprint('land2',__name__,url_prefix='')
 mod_sentiment = Blueprint('sentiment', __name__, url_prefix='')
 mod_trustworthiness = Blueprint('trustworthiness', __name__, url_prefix='')
 mod_entities = Blueprint('entities', __name__, url_prefix='')
@@ -300,9 +301,9 @@ def logout():
     return redirect(url_for('login'))
 
 
-@mod_task2.route('/task2',methods=['GET','POST'])
+@mod_land2.route('/land2',methods=['GET','POST'])
 @login_required
-def task2():
+def land2():
     form = BestForm(request.form)
     if form.validate():
         b = BestArticles(user = session['user'],key="all",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
@@ -312,6 +313,11 @@ def task2():
         if form.validate():
             q = NewQualityAssessment(target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data) #add precision e readability
             q.save()
+    return render_template("landing2.html")
+
+@mod_task2.route('/task2',methods=['GET','POST'])
+@login_required
+def task2():
     try:
         u = session['docs'][0]
         session['u'] = u

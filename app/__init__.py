@@ -46,6 +46,7 @@ from app.mod_search.controllers import mod_generate_token as generate_token_modu
 from app.mod_search.controllers import mod_task1 as task1_module
 from app.mod_search.controllers import mod_task2 as task2_module
 from app.mod_search.controllers import mod_land1 as land1_module
+from app.mod_search.controllers import mod_land2 as land2_module
 from app.mod_search.controllers import mod_sentiment as sentiment_module
 from app.mod_search.controllers import mod_trustworthiness as trustworthiness_module
 from app.mod_search.controllers import mod_all as all_module
@@ -69,6 +70,7 @@ app.register_blueprint(generate_token_module)
 app.register_blueprint(task1_module)
 app.register_blueprint(task2_module)
 app.register_blueprint(land1_module)
+app.register_blueprint(land2_module)
 app.register_blueprint(sentiment_module)
 app.register_blueprint(trustworthiness_module)
 app.register_blueprint(all_module)
