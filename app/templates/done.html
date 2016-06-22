@@ -1,19 +1,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-<script language="javascript">
-$(document).ready(function(){
- $('#ifr').on('load', function(){
- 	   $("#loading").remove();
-       $('#ifr').css('display','block').css('width','89%').css('height','600');
-       $('#global').nextAll().remove()
-       $('#connatix').remove();
-    });
- 
-});
-
-</script>
-{% endblock %}
 {% block body %}
 {% block content%}
 {% block title %}<div class="container"><div class="container"><h2>WebQ</h2><h4>Tool for Web Information Quality</h4></div>{% endblock %}
