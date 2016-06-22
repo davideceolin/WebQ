@@ -100,6 +100,7 @@ class BestArticles(db.Document):
     articles = db.ListField(db.StringField())
     discarted = db.ListField(db.StringField())
     timestamp = db.DateTimeField(default=datetime.datetime.now)
+    remarks = db.StringField(default="")
 
 class Sequence(db.Document):
     sequence = db.ListField(db.ReferenceField('Document'))
