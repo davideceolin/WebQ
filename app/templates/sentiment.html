@@ -61,6 +61,12 @@ Moreover, the document shows the following emotions.
 {{'A high level of' if doc.emotion['disgust']>0.6 else 'Some' if doc.emotion['disgust']>0.3 else 'A bit of' if doc.emotion['disgust']>0 else 'No'}} <u>disgust</u> [{{doc.emotion['disgust']}}].
 <hr>
 {% endfor %}
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Additional Remarks<p style="font-weight:normal">Can you motivate you selection? How informative is this information to you?</p></label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" name="remarks"></textarea>
+  </div>
+</div>
 
 <div class="text-center">
     <button id="submit" name="submit" class="btn btn-primary" type="submit">Submit</button>
