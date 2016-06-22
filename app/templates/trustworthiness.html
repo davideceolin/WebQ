@@ -39,7 +39,12 @@ For each document you can now see the ratings for how <b>trustworthy the source 
 <p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{ i +12}}</label></p>
 <div class="row">
 <div class="col-md-4">
-<p>Trustworthiness: {{doc.trustworthiness}}</p>
+<p>Trustworthiness: 
+{% if doc.trustworthiness>0 %}
+{{doc.trustworthiness}}</p>
+{% else %}
+0 / Not available </p>
+{% endif %}
 </div>
 </div>
 <hr>
