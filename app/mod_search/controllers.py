@@ -349,7 +349,7 @@ def land1():
 def trustworthiness():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(key="sentiment",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
+        b = BestArticles(key="sentiment",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user.to_dbref()) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
