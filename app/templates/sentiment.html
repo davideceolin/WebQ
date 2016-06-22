@@ -39,7 +39,8 @@ The text in this document expresses a
 <u>positive</u> sentiment [{{ doc.sentiment }}].
 {% elif doc.sentiment < 0 %}
 {% set x = x*-1 %}
-This document shows a 
+The text in this document expresses a 
+<b>
 {{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'somewhat'}}
 <u>negative</u> sentiment [{{ x }}].
 {% else %}
