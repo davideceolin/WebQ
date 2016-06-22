@@ -12,7 +12,7 @@
 $(document).ready(function(){
  $('#ifr').on('load', function(){
  	   $("#loading").remove();
-       $('#ifr').css('display','block').css('width','90%').css('height','600');
+       $('#ifr').css('display','block').css('width','89%').css('height','600');
        $('#global').nextAll().remove()
        $('#connatix').remove();
     });
@@ -35,7 +35,7 @@ $(document).ready(function(){
 </div></legend>
 <img id="loading" src="/img/loading.gif" with="5%" style="display:block;margin-left: auto;margin-right: auto"/>
 <iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=90%;float:left;"></iframe>
-<div width="10%">
+<div width="10%" style="margin-left:2px">
 <b>accuracy</b><br/>
 <b>precision</b><br/>
 <b>completeness</b><br/>
