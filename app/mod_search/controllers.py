@@ -311,6 +311,8 @@ def logout():
 @mod_land2.route('/land2',methods=['GET','POST'])
 @login_required
 def land2():
+    if len(session['docs'])==0:
+        return render_template("done.html")
     form = BestForm(request.form)
     if form.validate() and request.args.get('k')!="no":
         b = BestArticles(key="all",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user.to_dbref() ) #<--- todo
