@@ -306,7 +306,7 @@ def logout():
 def land2():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="all",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="all",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
         b.save()
     if request.args.get('url') is not None:
         form = QualityForm(request.form)
@@ -349,7 +349,7 @@ def land1():
 def trustworthiness():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="sentiment",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="sentiment",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
@@ -362,7 +362,7 @@ def trustworthiness():
 def titles():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="trustworthiness",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="trustworthiness",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
@@ -375,7 +375,7 @@ def titles():
 def titles():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="titles",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="titles",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
@@ -388,7 +388,7 @@ def titles():
 def sentiment():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="entities",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="entities",articles = request.form.getlist('check'), discarted =[], remarks=form.remarks.data, user = current_user ) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
@@ -401,7 +401,7 @@ def sentiment():
 def all():
     form = BestForm(request.form)
     if form.validate():
-        b = BestArticles(user = session['user'],key="sources",articles = request.form.getlist('check'), discarted =[] ) #<--- todo
+        b = BestArticles(key="sources",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user) #<--- todo
         b.save()
     urls = [x.url for x in session['docs']]
     form.articles.choices = [(x,y) for x,y in enumerate(urls)]
