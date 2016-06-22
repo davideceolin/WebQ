@@ -8,6 +8,14 @@ a = range(0,50)
 res=[]
 for i in range(0,12):
     random.shuffle(a)
+    b = a.index(44)
+    c = a.index(13)
+    d = b-c if b>c else c-b
+    while d<=6:
+        random.shuffle(a)
+        b = a.index(44)
+        c = a.index(13)
+        d = b-c if b>c else c-b
     res.append(a)
 
 res = [x for y in res for x in y]
