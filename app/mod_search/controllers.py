@@ -169,7 +169,7 @@ def search():
 def search_res():
     form = QualityForm(request.form)
     if form.validate():
-        q = QualityAssessment(target=session['u'],overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data)
+        q = QualityAssessment(user=current_user,target=session['u'],overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data)
         q.save()
     session['u'] = None
     if ('task2' in session and session['task2']==1):
@@ -190,7 +190,7 @@ def annotate2():
     form = QualityForm(request.form)
     q = None
     if form.validate():
-        q = QualityAssessment(target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data)#<<<precision e readability
+        q = QualityAssessment(user=current_user,target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data)#<<<precision e readability
         q.save()
         form.populate_obj(q)
     return render_template("page5.html", url=url, target=request.args.get('url'),form=form,qualityvalue=q)
@@ -204,7 +204,7 @@ def annotate3():
     url = "/proxy?headers=true&url="+request.args.get('url')
     form = QualityForm(request.form)
     if form.validate():
-        q = QualityAssessment(target=session['u'],overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data)
+        q = QualityAssessment(user=current_user,target=session['u'],overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data)
         q.save()
     return render_template("page5.html", url=url, target=request.args.get('url'),form=form,qualityvalue=QualityAssessment)
 
@@ -311,7 +311,7 @@ def land2():
     if request.args.get('url') is not None:
         form = QualityForm(request.form)
         if form.validate():
-            q = NewQualityAssessment(target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data) #add precision e readability
+            q = NewQualityAssessment(user=current_user,target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data) #add precision e readability
             q.save()
     return render_template("landing2.html")
 

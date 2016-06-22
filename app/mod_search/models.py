@@ -35,6 +35,7 @@ class Search(db.Document):
     }
 
 class QualityAssessment(db.Document):
+    user = db.ReferenceField('User')
     target = db.StringField(default="")
     overallQuality = db.StringField(default="1")
     accuracy = db.StringField(default="1")
@@ -48,6 +49,7 @@ class QualityAssessment(db.Document):
     timestamp = db.DateTimeField(default=datetime.datetime.now)
 
 class NewQualityAssessment(db.Document):
+    user = db.ReferenceField('User')
     target = db.StringField(default="",required=True)
     overallQuality = db.StringField(default="1")
     accuracy = db.StringField(default="1")
