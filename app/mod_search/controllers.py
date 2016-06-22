@@ -312,7 +312,7 @@ def logout():
 @login_required
 def land2():
     form = BestForm(request.form)
-    if form.validate() && request.args.get('k')!="no":
+    if form.validate() and request.args.get('k')!="no":
         b = BestArticles(key="all",articles = request.form.getlist('check'), discarted =[] , remarks=form.remarks.data, user = current_user.to_dbref() ) #<--- todo
         b.save()
     if request.args.get('url') is not None:
