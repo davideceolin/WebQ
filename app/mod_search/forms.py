@@ -37,3 +37,4 @@ class QualityForm(Form):
 
 class BestForm(Form):
     articles =  MultiCheckboxField("Docs", coerce=int)
+    remarks = TextField('remarks')
