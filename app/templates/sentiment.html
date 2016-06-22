@@ -33,7 +33,7 @@ Below you can find <b>the same 6 documents as before, but now in a different ord
 <p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>Document {{i+6}} </label></p>
 {% if doc.sentiment is not none %}
 {% if doc.sentiment >0 %}
-This document shows a <b>
+The text in this document expresses a <b>
 
 {{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'somewhat'}}
 <u>positive</u> sentiment [{{ doc.sentiment }}].
@@ -49,7 +49,7 @@ It was not possible to compute the sentiment of this document.
 It was not possible to compute the sentiment of this document.
 {% endif %}
 </b>
-<br/>Moreover, the document shows the following emotions.
+<br/>Moreover, the text of this document expresses specifically the following emotions.
 {{'A high level of' if doc.emotion['joy']>0.6 else 'Some' if doc.emotion['joy']>0.3 else 'A bit of' if doc.emotion['joy']>0 else 'No'}}
 
 <u>joy</u> [{{doc.emotion['joy']}}]. 
