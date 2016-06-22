@@ -16,6 +16,7 @@ $(document).ready(function(){
        $('#global').nextAll().remove()
        $('#connatix').remove();
     });
+ $('#leg').css('background-color', '#ffff66');
 });
 
 </script>
@@ -34,8 +35,8 @@ $(document).ready(function(){
 7. Below the article you can see your current quality assesment. Should you wish to revise it, you can do so before submit.
 </div></legend>
 <img id="loading" src="/img/loading.gif" with="5%" style="display:block;margin-left: auto;margin-right: auto"/>
-<div><iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=90%;float:left;"></iframe></div>
-<div width="10%" style="margin-left:5px;background-color: #ffff66;">
+<iframe id="ifr" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="{{ url }}" width="800" height="600" style="margin-bottom:20px;display:none;width=90%;float:left;"></iframe>
+<div id="leg" width="10%" style="margin-left:5px;">
 <b>Qualities:</b><br/>
 Accuracy<br/>
 Precision<br/>
