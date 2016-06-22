@@ -16,7 +16,7 @@ for i in range(0,12):
         b = a.index(44)
         c = a.index(13)
         d = b-c if b>c else c-b
-    res.append(a)
+    res.append(a[:])
 
 res = [x for y in res for x in y]
 
