@@ -186,17 +186,24 @@ def annotate():
 
 @mod_annotate2.route('/annotate2/', methods=['GET', 'POST'])
 def annotate2():
-    url = "/proxy?headers=true&url="+request.args.get('url')
     form = QualityForm(request.form)
     q = None
+    url = "/proxy?headers=true&url="+request.args.get('url')
     if form.validate():
-        q = QualityAssessment(user=current_user.to_dbref() ,target=request.args.get('url'),overallQuality=form.overallQuality.data,accuracy=form.accuracy.data,completeness=form.completeness.data,neutrality=form.neutrality.data,relevance=form.relevance.data,trustworthiness=form.trustworthiness.data,remarks=form.remarks.data,precision=form.precision.data,readability=form.readability.data)#<<<precision e readability
+        q = QualityAssessment(user=current_user.to_dbref(),
+                              target=request.args.get('url'),
+                              overallQuality=form.overallQuality.data,
+                              accuracy=form.accuracy.data,
+                              completeness=form.completeness.data,
+                              neutrality=form.neutrality.data,
+                              relevance=form.relevance.data,
+                              trustworthiness=form.trustworthiness.data,
+                              remarks=form.remarks.data,
+                              precision=form.precision.data,
+                              readability=form.readability.data)
         q.save()
         form.populate_obj(q)
     return render_template("page5.html", url=url, target=request.args.get('url'),form=form,qualityvalue=q)
-    #url = "/proxy?headers=true&url="+request.args.get('url')
-    #session['u'] = request.args.get('url')
-#return render_template("page2.html", url=url, next="/annotate3?url="+request.args.get('url'))
 
 @mod_annotate3.route('/annotate3', methods=['GET', 'POST'])
 @login_required
