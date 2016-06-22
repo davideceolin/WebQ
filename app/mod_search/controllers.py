@@ -275,7 +275,7 @@ def login():
     login_user(registered_user)
     session['user'] = registered_user
     flash('Logged in successfully')
-    return redirect(request.args.get('next') or url_for('task1.task1'))
+    return redirect(request.args.get('next') or url_for('land1.land1'))
 
 @app.route('/register' , methods=['GET','POST'])
 def register():
