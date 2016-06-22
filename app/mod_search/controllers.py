@@ -223,7 +223,7 @@ def get_image(path):
 @set_renderers(HTMLRenderer)
 @login_required
 def proxy():
-    ann = "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script><script language=\"javascript\" src=\"js/annotator.js\"></script><script language=\"javascript\">$( document ).ready(function() {var app = new annotator.App();\napp.include(annotator.ui.main, {element: document.body , editorExtensions: [annotator.ui.tags.editorExtension]});\napp.include(annotator.storage.http, {prefix: 'https://limitless-refuge-57505.herokuapp.com','annotationData': {'uri': '%s'},});\napp.include(annotator.identity.simple);\napp.start().then(function () { app.ident.identity = '%s'});});</script>" % (urlparse(request.args.get('url')),current_user.email)
+    ann = "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script><script language=\"javascript\" src=\"js/annotator.js\"></script><script language=\"javascript\">$( document ).ready(function() {var app = new annotator.App();\napp.include(annotator.ui.main, {element: document.body , editorExtensions: [annotator.ui.tags.editorExtension]});\napp.include(annotator.storage.http, {prefix: 'https://limitless-refuge-57505.herokuapp.com'},'annotationData': {'uri': '%s'});\napp.include(annotator.identity.simple);\napp.start().then(function () { app.ident.identity = '%s'});});</script>" % (urlparse(request.args.get('url')),current_user.email)
     try:
         reply = json.loads(proxypy.get(request.query_string),'iso-8859-15')['content']
     except:
