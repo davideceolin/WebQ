@@ -21,7 +21,7 @@
     {{ form.hidden_tag() }}
 <legend>
 <div style ="background-color: #ccff99; padding: 30px 30px 30px 30px;">
-You are to write an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br><br/>
+You are writing an article on the debate about <i>the <b>vaccination</b> debate triggered by the measles outbreak in Disneyland in 2015.</i><br><br/>
 For each document you can now see their <b>titles, sources, all their ratings and tags</b>. All the ratings are between 0 and 1, where 0 is indicates low score and 1 indicates high score.
 </div></legend>
 <br>
@@ -52,12 +52,12 @@ For each document you can now see their <b>titles, sources, all their ratings an
 {% if doc.sentiment >0 %}
 This document shows a 
 
-{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
+{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'somewhat'}}
 <u>positive</u> sentiment [{{ doc.sentiment }}].
 {% elif doc.sentiment < 0 %}
 {% set x = x*-1 %}
 This document shows a 
-{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'poorly'}}
+{{'strongly' if doc.sentiment >0.6 else 'fairly' if doc.sentiment>0.3 else 'somewhat'}}
 <u>negative</u> sentiment [{{ x }}].
 {% else %}
 It was not possible to compute the sentiment of this document.
@@ -66,7 +66,7 @@ It was not possible to compute the sentiment of this document.
 It was not possible to compute the sentiment of this document.
 {% endif %}
 
-Moreover, the document shows the following emotions.
+<br/>Moreover, the document shows the following emotions.
 {{'A high level of' if doc.emotion['joy']>0.6 else 'Some' if doc.emotion['joy']>0.3 else 'A bit of' if doc.emotion['joy']>0 else 'No'}}
 
 <u>joy</u> [{{doc.emotion['joy']}}]. 
