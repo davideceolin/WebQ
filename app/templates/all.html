@@ -35,7 +35,7 @@ For each document you can now see its <b>titles, sources, all its ratings and ta
 </div>
 </div>
 <div class="row">
-<div class="col-md-4"><i>Entities:</i></div></div>
+<div class="col-md-4"><i><span style="background-color:#ffff66;">Entities:</span></i></div></div>
 <div class="row">
 {% for x in doc.entities %}
 {% if 'text' in x %}
@@ -44,7 +44,7 @@ For each document you can now see its <b>titles, sources, all its ratings and ta
 {% endfor %}
 </div>
 <br/>
-<div class="row"><div class="col-md-12"><i>Sentiment:</i></div></div>
+<div class="row"><div class="col-md-12"><i><span style="background-color:#ffff66;">Sentiment:</span></i></div></div>
 <div class="row">
 <div class="col-md-12">
 {% set i = i + 1%}
@@ -82,7 +82,7 @@ It was not possible to compute the sentiment of this document.
 <br/>
 <div class="row">
 <div class="col-md-4">
-<p><i>Trustworthiness:</i> {{doc.trustworthiness}}</p>
+<p><i><span style="background-color:#ffff66;">Trustworthiness:</span></i> {{doc.trustworthiness}}</p>
 </div>
 </div>
 <hr>
