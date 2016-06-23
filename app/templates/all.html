@@ -28,7 +28,7 @@ For each document you can now see its <b>titles, sources, all its ratings and ta
 <legend>Click on all documents that you would consider using as a source for your article</legend>
 {% set i = 0%}
 {% for doc in docs %}
-<div class="row"><p><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></p></div>
+<div class="row"><div class="col-md-12"><input type="checkbox" name="check" value=" {{ doc.url }}"> <label>{{ doc.title }}</label></div></div>
 <div class="row">
 <div class="col-md-12">
 <p><i><span style="background-color:#ffff66;">Source:</span></i> {{doc.source}}</p>
