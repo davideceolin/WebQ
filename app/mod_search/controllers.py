@@ -20,7 +20,7 @@ import numpy as np
 import os
 from sklearn.linear_model import SGDClassifier
 from app.mod_search.forms import SearchForm, QualityForm, BestForm
-from app.mod_search.models import Search, SearchItem, Sentiment, Objectivity, QualityAssessment, User, Document, NewQualityAssessment, Emotion, BestArticles, Sequence
+from app.mod_search.models import Search, SearchItem, Sentiment, Objectivity, QualityAssessment, User, Document, NewQualityAssessment, Emotion, BestArticles, Sequence_old
 import webhose
 from sklearn.externals import joblib
 MYDIR = os.path.dirname(__file__)
@@ -281,7 +281,7 @@ def login():
 def register():
     if request.method == 'GET':
         return render_template('register.html')
-    user = User(request.form['username'] , request.form['password'],request.form['email'],Sequence.objects(__raw__={'user':{'$exists':False}}).first())
+    user = User(request.form['username'] , request.form['password'],request.form['email'],Sequence_old.objects(__raw__={'user':{'$exists':False}}).first())
     user.save()
     s = user.doc_sequence
     s.user = user
