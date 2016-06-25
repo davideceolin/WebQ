@@ -67,7 +67,7 @@ class User(db.Document):
     username = db.StringField()
     password = db.StringField()
     email = db.EmailField()
-    doc_sequence = db.ReferenceField('Sequence')
+    doc_sequence = db.ReferenceField('Sequence_old')
     
     def is_authenticated(self):
         return True
@@ -104,6 +104,6 @@ class BestArticles(db.Document):
     timestamp = db.DateTimeField(default=datetime.datetime.now)
     remarks = db.StringField(default="")
 
-class Sequence(db.Document):
+class Sequence_old(db.Document):
     sequence = db.ListField(db.ReferenceField('Document'))
     user = db.ReferenceField('User')
